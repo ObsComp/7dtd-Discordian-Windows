@@ -1,43 +1,41 @@
 # 7dtd-Discordian-Windows
 
 Discordian:
-A Discord bot designed to integrate with ServerTools server manager for 7 Days to Die dedicated servers.
+A Discord bot designed to integrate with ServerTools server manager on 7 Days to Die dedicated servers.
 
-The purpose of this program is to bridge the chat services between discord and the 7 days to die game server of choice utilizing ServerTools as a web api. 
+The purpose of this program is to bridge the chat services between Discord and the 7 days to die game server of choice utilizing ServerTools as a bridge. 
 It allows for multiple servers to operate through a single bot.
 The program operates as a stand alone executable. 
 This may not be allowed on host services. 
 Make sure you have permission to run executable files before setting up the bot and wasting your time.
 
-If you can not run a windows based executable file, you can still use ServerTools for game chat to be sent outbound to a Discord channel of your choice.
-However, you will not be able to send Discord chat inbound to the game server using Discordian.
+If you can not run a windows based executable file(.exe), you can still use ServerTools for game chat to be sent outbound to a Discord channel of your choice.
+However you will not be able to send Discord chat inbound to the game server.
 
 Instructions for both are as follows:
 
 INBOUND CHAT FROM DISCORD TO SERVER
 
-STEP 1
 
-Make sure you are using version 20.5.3 or higher of ServerTools. If you are not, download and install the latest version at 
+Make sure you are using the latest version of ServerTools. If you are not, download and install from 
 https://github.com/dmustanger/7dtd-ServerTools/releases
 
 Other features and tools from ServerTools do not need to be utilized if you do not wish to. It is required for
-communications between discord and the game to function.
+communications between the game and Discord to function.
 
 After you have verified your ServerTools version and installation, you may start your server as you would normally.
 
-If you have not used ServerTools before, it will create a new folder next to your Mods folder named ServerTools. Inside of this folder you will find the 
-main ServerToolsConfig.xml that is used to control ServerTools options. Open this file and scroll to the section that says Tool Name="Discord_Bot".
+If you have not used ServerTools before, it will create a new folder in the parent directory to where you installed it. Inside of this folder you will
+find the main ServerToolsConfig.xml that is used to control ServerTools options. Open this file and scroll to the section that says Tool Name="Discord_Bot".
 
 Enable this by setting the Enable option to true, as seen in this example. Enable="True". Save the file. ServerTools will now generate a file named
-ServerToolsToken.txt and place it inside of the ServerTools folder you found your ServerToolsConfig file. You will need this later.
+DiscordToken.txt and place it inside of the ServerTools folder you found your ServerToolsConfig file. You will need this later.
 
-Look for Tool Name="Web_API" and enable it as well. It will use the port you have set as the Port option. This port must be open. If you are using a host,
-this port will need to be opened for you. Not all hosts will allow this. If your host will not, do not continue the installation. The ServerTools Web API 
-requires an open port for communications and can not function without it.
+Look for Tool Name="Web_API" and enable it as well. It will use the port you have set in the options. This port must be open. If you are using a host,
+this port will need to be opened for you. Not all hosts will allow this. If your host will not, do not continue this process. The ServerTools Web API and
+Discordian bot require an open port for communications and can not function without it.
 
-Take the Discordian bot files out of the zip file and place them in their own folder of your choice. You can place them anywhere but keep in mind your
-config file holds sensitive password information for connection. Abuse of a Discord token can result in a ban. Do not let people access this publicly
+Take the Discordian bot files out of the zip file and place them in their own folder of your choice. You can place them anywhere.
 
 Open your web browser to the following address https://discord.com/developers/applications
 
@@ -53,8 +51,7 @@ You have created your first bot for this application. You can name it anything y
 
 There is an important section under the bot called Token. It is kept hidden on purpose. You can reveal it to read it if you wish but DO NOT SHARE IT!
 It is important to never share this token with anyone else. If you ever feel it has been compromised, come back to this page/application, then bot and
-regenerate a new token. This will void the old token, making it unusable. You will also need to use the new token it generates instead of the old one
-for future Discordian connection.
+regenerate a new token. This will void the old token, making it unusable. You will need to use the new token in your config instead of the old one.
 
 Go to the left side tabs and select 0Auth2. Scroll down to the section named SCOPES. You will see multiple boxes you can select under this. Choose bot.
 Scroll down further to see the permissions given to this bot. Select at minimum the following: View Channels, Send Messages, Embed Links, Attach Files,
@@ -62,9 +59,8 @@ Read Message History, Use External Emoji, Add Reactions. You can select more opt
 these.
 
 Between the section you selected bot and the permissions section is an http link with a big copy button beside it. Copy this link and paste it in to your
-web browser. It will load a new page where you can add your new bot to your guild with these settings. Another name for a Discord server is a guild. 
-If you are confused by the term guild, it is in reference to the Discord server you are adding the bot to. A channel is a sub section of a guild and used
-for communications between guild members with permission.
+web browser. It will load a new page where you can add your new bot to your guild. Another name for a Discord server is a guild. If you are confused by 
+the term guild, it is in reference to the Discord server you are adding the bot to.
 
 You should now have an offline bot in your guild with the name you set for your bot. You can go back and change this name at any time at the applications
 link from earlier.
@@ -72,13 +68,13 @@ link from earlier.
 Locate the Config.xml that was provided with the Discordian files you placed in its own folder. Open this file. Take notice it has two examples surrounded
 by comment tags that look like this <!--  -->. Anything between these tags are treated as a comment and ignored. At the top you will notice a
 Discord Token that is blank. You want to take the bot token off the developers application page from earlier that you were warned should not be shared
-with anyone else and place it in this field. Example: <Discord Token="54321TU4MTI0NjU4ODg0NjE5.12345.KLcfcItdwwlJ0EmTFYD12345-Ok" />
+with anyone else and place it here as the Discord Token. Example: <Discord Token="54321TU4MTI0NjU4ODg0NjE5.12345.KLcfcItdwwlJ0EmTFYD12345-Ok" />
 
-Copy and paste one of the example entries below the others but remove the comment tags <!-- and -->.
-Add your game server ip address as the Server IP. Add the port that ServerTools Web API is utilizing and should be open at this time.
+Remove the comment tags from the first entry and add your game server ip address as the Server IP. Add the port that ServerTools Web API is utilizing and
+should be open at this time.
 
-Locate the ServerToolsToken.txt that was generated by ServerTools upon enabling the Discord_Bot tool earlier. It can be found in your ServerTools folder.
-Take the token and place it in the Config.xml as the ServerTools_Token. Example: ServerTools_Token="4LWTWq6xlu2H3Wk7RMkDZP"
+Locate the DiscordToken.txt that was generated by ServerTools upon enabling the Discord_Bot tool earlier and open it. It can be found in your ServerTools folder.
+Take the token value and place it in the Config.xml as the ServerTools_Token. Example: ServerTools_Token="SLCg3Cb7JE3MGWUzNbxqIK"
 
 You will need the channel id of the channel you wish chat to pass back and forth between. Go to the list of channels in your guild and right click the
 channel. You should see an option called copy id. If you do not it is because you must enable developer mode in Discord. Access your user settings. Under
@@ -88,29 +84,28 @@ to pass chat between and click copy id. Place this id in the Config.xml as the C
 Select a command prefix that will be used in Discord to trigger special commands. Example: Command_Prefix="#".
 
 The final entry should look like this:
-<Server IP="123.1.2.3" Port="8084" ServerTools_Token="4LWTWq6xlu2H3Wk7RMkDZP" Channel_ID="123425001664774321" Command_Prefix="!" />
+<Server IP="123.1.2.3" Port="8084" ServerTools_Token="SLCg3Cb7JE3MGWUzNbxqIK" Channel_ID="123425001664774321" Command_Prefix="!" />
 
 Save the file.
 
-With your game server running and Discord_Bot and Web_API tools enabled, you can now run the Discordian.exe. It will use your Config.xml to establish a
-connection to the correct guild based on the Discord Token and the game server based on the IP and port. It will only try to pass chat messages
+With your game server running and Discord_Bot/Web_API tools enabled, you can now run the Discordian.exe. It will use your Config.xml to establish a
+connection to the correct guild based on the Tokens provided and the game server IP/port. It will only try to pass chat messages
 from the channel id you have specified. If this channel id is incorrect, you will be unable to connect nor send messages in to game.
 
-You can setup multiple servers in the same manner when running ServerTools. It only requires one bot using one Discord token to handle all of them. Each 
+You can setup multiple servers in the same manner when running ServerTools. It only requires one bot using a single bot token to handle all of them. Each 
 ServerTools must generate its own secure token and have access through the Web API to function. They must all use individual ports for communications when
 hosted behind a single IP address.
 
-The Discordian.exe is a console application and can be minimized without worry. It will auto reconnect to discord and the game servers. Server restarts 
-will not effect the bot, as it will reconnect when available and send missed messages.
+The Discordian.exe is a console application and can be minimized without worry. It will auto reconnect to Discord and the game server. Server restarts will
+not effect the bot as it will reconnect when available.
 
 As additional features, you may set the message prefix/color, name color and message color that the message will utilize when sent from Discord to game.
-These are found under tool name Discord_Bot_Extended in the ServerToolsConfig.xml.
+These are found under tool name Discord_Bot_Extended.
 
 OUTBOUND CHAT FROM SERVER TO DISCORD
 
-STEP 1
 
-The bot is NOT required to be active or setup for outbound chat from the game server to be sent in to discord. Discord offers a feature called a webhook.
+The bot is NOT required to be active or setup for outbound chat from the game server to be sent in to Discord. Discord offers a feature called a webhook.
 We will be utilizing this as it is far more efficient than passing data through the bot itself.
 
 Go to your list of Discord channels and choose the one you wish to have game chat be sent to. Click to edit the channel and then select Integrations. 
