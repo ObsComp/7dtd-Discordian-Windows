@@ -1,5 +1,7 @@
 # 7dtd-Discordian-Windows
 
+This project has been discontinued until further notice. Support and integration of the D# library has been suspended by the development team. Discordian will remain for educational purposes only. All compiled version links have been removed.
+
 Discordian:
 A Discord bot designed to integrate with ServerTools server manager on 7 Days to Die dedicated servers.
 
